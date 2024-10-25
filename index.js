@@ -4,7 +4,7 @@ const app=express();
 const { default: mongoose } = require('mongoose');
 const serverless = require('serverless-http')
 
-const connectDB = require('./Config/dbConnect');
+const connectDB = require('./Config/DbConnect');
 connectDB();
 const port = process.env.PORT || 8080;
 
