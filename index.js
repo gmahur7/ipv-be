@@ -8,10 +8,10 @@ const connectDB = require('./Config/dbConnect');
 connectDB();
 const port = process.env.PORT || 8080;
 
-const clientUrl = process.env.CLIENT_URL || 'http://localhost:3000';
-const adminUrl = process.env.ADMIN_URL || 'http://localhost:5173';
-// const clientUrl = process.env.CLIENT_URL;
-// const adminUrl = process.env.ADMIN_URL;
+// const clientUrl = process.env.CLIENT_URL || 'http://localhost:3000';
+// const adminUrl = process.env.ADMIN_URL || 'http://localhost:5173';
+const clientUrl = process.env.CLIENT_URL;
+const adminUrl = process.env.ADMIN_URL;
 
 const cors = require('cors');
 const bodyParser = require('body-parser')
