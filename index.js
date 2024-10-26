@@ -17,15 +17,17 @@ const cors = require('cors');
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser');
 
+app.use(express.json())
+app.use(bodyParser.json())
+app.use(cookieParser())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: true }));
+
 app.use(cors({
     origin:[clientUrl,adminUrl],
     methods:['GET','POST','DELETE','PATCH','PUT','OPTIONS'],
     credentials:true
 }))
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(express.json())
-app.use(bodyParser.json())
-app.use(cookieParser())
 
 app.get('/',(req,res)=>{
     return res.status(200).json({
