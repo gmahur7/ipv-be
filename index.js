@@ -24,10 +24,13 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
-    origin:[clientUrl,adminUrl],
-    methods:['GET','POST','DELETE','PATCH','PUT','OPTIONS'],
-    credentials:true
-}))
+    origin: [clientUrl, adminUrl],  // Use specific origins instead of '*'
+    methods: ['GET', 'POST', 'DELETE', 'PATCH', 'PUT', 'OPTIONS'],
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+    exposedHeaders: ['Content-Range', 'X-Content-Range'],
+    maxAge: 86400 // Cache preflight request for 24 hours
+}));
 
 app.get('/',(req,res)=>{
     return res.status(200).json({

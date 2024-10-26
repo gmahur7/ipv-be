@@ -54,9 +54,9 @@ exports.registerUser = async (req, res) => {
             maxAge: 24 * 60 * 60 * 1000
         });
 
-        res.status(201).json({ success:true,message: 'User registered successfully', user,token });
+        return res.status(201).json({ success:true,message: 'User registered successfully', user,token });
     } catch (error) {
-        res.status(500).json({ success:false,message: 'Server error', error });
+        return res.status(500).json({ success:false,message: 'Server error', error });
     }
 };
 
@@ -92,7 +92,7 @@ exports.loginUser = async (req, res) => {
 // Logout a user
 exports.logoutUser = (req, res) => {
     res.cookie('auth_token', '', { maxAge: 1 });
-    res.status(200).json({
+    return res.status(200).json({
         success: true,
         message: 'Logged out successfully'
     });
@@ -143,7 +143,7 @@ exports.userProfile = async (req,res) => {
         });
 
     } catch (error) {
-        console.log("error in updating user clicks and points" + error)
+        console.log("error in getting user profile" + error)
         return res.status(404).json({
             success: false,
             message: "Server error" + error
