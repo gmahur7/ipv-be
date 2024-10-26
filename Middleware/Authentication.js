@@ -6,9 +6,8 @@ exports.generateUserToken = (user)=>{
 
 // Authorization middleware to protect routes
 exports.isAuthenticated = (req, res, next) => {
-
-    const token = req.cookies.auth_token;
-  
+    const token = req.cookies.auth_token || req.headers.authorization.split(" ")[1];
+    
     if (!token) {
       return res.status(401).json({ message: 'Not authorized, token missing' });
     }
@@ -25,7 +24,7 @@ exports.isAuthenticated = (req, res, next) => {
 
 exports.isAdminAuthenticated = (req, res, next) => {
   const token = req.cookies.auth_admin_token;
-
+  // console.log(token)
   if (!token) {
       return res.status(401).json({ 
           success: false,

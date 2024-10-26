@@ -127,7 +127,7 @@ exports.fetchAllUsers = async (req,res) => {
 // get user profile
 exports.userProfile = async (req,res) => {
     const currentUser = req.user;
-    
+    console.log(currentUser)
     try {
         const user = await User.findById(currentUser)
         if (!user) {
